@@ -3,6 +3,7 @@
     file:
       path: /streamsets_pipelines/
       state: directory
+      mode: 777
 
   # Download the MapR PACC StreamSets Container
   - name: Download the mapr-pacc-streamsets-docker container
@@ -36,6 +37,7 @@
       capabilities:
         - SYS_ADMIN
         - SYS_RESOURCE
-      network_mode: host
+      ports:
+        - "18630:18630"
       volumes:
       - /streamsets_pipelines/:/data
