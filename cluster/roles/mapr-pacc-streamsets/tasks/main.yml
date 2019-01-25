@@ -5,6 +5,15 @@
       state: directory
       mode: '777'
 
+  - name: Creates /streamsets_pipelines/import_pipelines
+    file:
+      path: /streamsets_pipelines/import_pipelines
+      state: directory
+      mode: '777'
+
+  - name: Copy the pipelines to be imported
+    shell: cp sdc-pipelines/* /streamsets_pipelines/import_pipelines/
+
   # Download the MapR PACC StreamSets Container
   - name: Download the mapr-pacc-streamsets-docker container
     docker_image:
