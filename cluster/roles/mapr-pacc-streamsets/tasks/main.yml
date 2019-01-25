@@ -3,7 +3,7 @@
     file:
       path: /streamsets_pipelines/
       state: directory
-      mode: 777
+      mode: '777'
 
   # Download the MapR PACC StreamSets Container
   - name: Download the mapr-pacc-streamsets-docker container
