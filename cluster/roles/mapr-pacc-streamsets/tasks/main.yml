@@ -39,5 +39,6 @@
         - SYS_RESOURCE
       ports:
         - "18630:18630"
+        - "8001:8001"
       volumes:
       - /streamsets_pipelines/:/data
