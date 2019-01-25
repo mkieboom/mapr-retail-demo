@@ -12,7 +12,7 @@
       mode: '777'
 
   - name: Copy the pipelines to be imported
-    shell: cp sdc-pipelines/* /streamsets_pipelines/import_pipelines/
+    shell: cp sdc-pipelines/* /streamsets_pipelines/import_pipelines/ && chmod +x /streamsets_pipelines/import_pipelines/*.sh
 
   # Download the MapR PACC StreamSets Container
   - name: Download the mapr-pacc-streamsets-docker container
