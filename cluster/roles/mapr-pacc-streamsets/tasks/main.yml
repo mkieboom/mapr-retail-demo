@@ -2,13 +2,13 @@
   # Download the MapR PACC StreamSets Container
   - name: Download the mapr-pacc-streamsets-docker container
     docker_image:
-      name: mkieboom/mapr-pacc-streamsets-docker:{{mapr-pacc-streamsets-version}}
+      name: mkieboom/mapr-pacc-streamsets-docker:{{mapr_pacc_streamsets_version}}
       state: present
       force: yes
 
   - name: Launch the mapr-pacc-streamsets-docker container
     docker_container:
-      image: mkieboom/mapr-pacc-streamsets-docker:{{mapr-pacc-streamsets-version}}
+      image: mkieboom/mapr-pacc-streamsets-docker:{{mapr_pacc_streamsets_version}}
       name: mapr-pacc-streamsets-docker
       restart_policy: always
       state: started

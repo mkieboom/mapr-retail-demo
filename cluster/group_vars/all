@@ -5,7 +5,7 @@ mapr_group: mapr
 mapr_user_uid: 5000
 mapr_group_gid: 5000
 
-mapr-pacc-streamsets-version: streamsets360_mapr601_mep500
+mapr_pacc_streamsets_version: streamsets360_mapr601_mep500
 
 # Docker
 # Leave docker version empty for latest docker version. Otherwise:
