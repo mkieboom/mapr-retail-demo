@@ -12,7 +12,7 @@ yum install -y git ansible
 ##### Clone the project
 ```
 git clone https://github.com/mkieboom/mapr-retail-demo
-cd mapr-retail-demo
+cd mapr-retail-demo/cluster/
 ```
 
 #### Configuration
