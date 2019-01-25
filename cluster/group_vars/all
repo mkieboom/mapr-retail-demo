@@ -1,4 +1,7 @@
 
+# MapR Cluster name
+mapr_cluster_name: demo.mapr.com
+
 # MapR user & group
 mapr_user: mapr
 mapr_group: mapr

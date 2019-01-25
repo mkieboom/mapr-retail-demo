@@ -1,4 +1,9 @@
 ---
+  - name: Creates /streamsets_pipelines/ directory to store pipelines
+    file:
+      path: /streamsets_pipelines/
+      state: directory
+
   # Download the MapR PACC StreamSets Container
   - name: Download the mapr-pacc-streamsets-docker container
     docker_image:
@@ -16,7 +21,7 @@
       force_kill: yes
       interactive: yes
       env:
-        MAPR_CLUSTER={{inventory_hostname}}
+        MAPR_CLUSTER={{mapr_cluster_name}}
         MAPR_CLDB_HOSTS={{ansible_default_ipv4.address}}
         MAPR_CONTAINER_USER={{mapr_user}}
         MAPR_CONTAINER_PASSWORD={{mapr_user}}
@@ -32,3 +37,5 @@
         - SYS_ADMIN
         - SYS_RESOURCE
       network_mode: host
+      volumes:
+      - /streamsets_pipelines/:/data

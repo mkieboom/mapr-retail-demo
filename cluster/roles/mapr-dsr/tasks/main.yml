@@ -17,7 +17,7 @@
       interactive: yes
       env:
         HOST_IP={{ansible_default_ipv4.address}}
-        MAPR_CLUSTER={{inventory_hostname}}
+        MAPR_CLUSTER={{mapr_cluster_name}}
         MAPR_CLDB_HOSTS={{ansible_default_ipv4.address}}
         MAPR_CONTAINER_USER={{mapr_user}}
         MAPR_CONTAINER_PASSWORD={{mapr_user}}
