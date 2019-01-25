@@ -1,0 +1,8 @@
+
+mapr_user: mapr
+
+# Docker
+# Leave docker version empty for latest docker version. Otherwise:
+# docker_version: 18.09
+docker_version:
+docker_repo_url: https://download.docker.com/linux/centos/docker-ce.repo

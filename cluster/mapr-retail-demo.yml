@@ -1,0 +1,12 @@
+## Pre-requisites
+- name: Apply pre-requisite configuration to all nodes
+  hosts: mapr-retail-demo
+  roles:
+    - common-prereq-software
+
+## Install Docker
+- name: Install Docker
+  hosts: mapr-retail-demo
+  roles:
+    - thirdparty-docker
+
