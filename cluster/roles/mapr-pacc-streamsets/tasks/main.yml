@@ -1,0 +1,34 @@
+---
+  # Download the MapR PACC StreamSets Container
+  - name: Download the mapr-pacc-streamsets-docker container
+    docker_image:
+      name: mkieboom/mapr-pacc-streamsets-docker:{{mapr-pacc-streamsets-version}}
+      state: present
+      force: yes
+
+  - name: Launch the mapr-pacc-streamsets-docker container
+    docker_container:
+      image: mkieboom/mapr-pacc-streamsets-docker:{{mapr-pacc-streamsets-version}}
+      name: mapr-pacc-streamsets-docker
+      restart_policy: always
+      state: started
+      recreate: yes
+      force_kill: yes
+      interactive: yes
+      env:
+        MAPR_CLUSTER={{inventory_hostname}}
+        MAPR_CLDB_HOSTS={{ansible_default_ipv4.address}}
+        MAPR_CONTAINER_USER={{mapr_user}}
+        MAPR_CONTAINER_PASSWORD={{mapr_user}}
+        MAPR_CONTAINER_GROUP={{mapr_group}}
+        MAPR_CONTAINER_UID={{mapr_user_uid}}
+        MAPR_CONTAINER_GID={{mapr_group_gid}}
+        MAPR_MOUNT_PATH=/mapr
+      security_opts:
+        - "apparmor:unconfined"
+      devices:
+        - "/dev/fuse"
+      capabilities:
+        - SYS_ADMIN
+        - SYS_RESOURCE
+      network_mode: host

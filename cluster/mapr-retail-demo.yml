@@ -10,3 +10,14 @@
   roles:
     - thirdparty-docker
 
+## Install mapr-dsr
+- name: Install mapr-dsr
+  hosts: mapr-retail-demo
+  roles:
+    - mapr-dsr
+
+## Install mapr-pacc-streamsets
+- name: Install mapr-pacc-streamsets
+  hosts: mapr-retail-demo
+  roles:
+    - mapr-pacc-streamsets
