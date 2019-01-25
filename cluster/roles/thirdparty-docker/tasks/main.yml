@@ -14,7 +14,14 @@
     package: name={{item}} state=present
     with_items:
       - docker-ce-{{docker_version}}*
+      - python2-pip
+  #    - docker-compose
 
+  # Install docker compose using pip
+  # This is a requirement to allow Ansible to manage containers
+  - name: Install docker-compose
+    pip:
+      name: docker-compose
 
   # # Configure http proxy for Docker if required
   # # doc: https://docs.docker.com/engine/admin/systemd/#httphttps-proxy
