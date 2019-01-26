@@ -2,10 +2,10 @@
   "pipelineConfig" : {
     "schemaVersion" : 6,
     "version" : 10,
-    "pipelineId" : "MapRClusterd39951a0-5041-4724-a521-c4b8e5ad7458",
-    "title" : "MapR Retail Demo",
+    "pipelineId" : "mapr_retail_demo",
+    "title" : "mapr_retail_demo",
     "description" : "",
-    "uuid" : "5659007e-e755-4e07-af13-696311586fc4",
+    "uuid" : "92f1d477-8be5-4932-9303-dfdadff5cb7c",
     "configuration" : [ {
       "name" : "executionMode",
       "value" : "STANDALONE"
@@ -431,8 +431,8 @@
       "uiInfo" : {
         "description" : "",
         "label" : "HTTP Server",
-        "xPos" : 60,
-        "yPos" : 50,
+        "xPos" : 55.15037536621094,
+        "yPos" : 138.90977478027344,
         "stageType" : "SOURCE"
       },
       "inputLanes" : [ ],
@@ -487,7 +487,7 @@
       "stageVersion" : "1",
       "configuration" : [ {
         "name" : "mapRJsonConfigBean.tableName",
-        "value" : "/mapr-retail-devices"
+        "value" : "/mapr-retail-demo/devices"
       }, {
         "name" : "mapRJsonConfigBean.createTable",
         "value" : false
@@ -533,8 +533,8 @@
       "uiInfo" : {
         "description" : "",
         "label" : "Trash 1",
-        "xPos" : 500,
-        "yPos" : 300,
+        "xPos" : 498.38348388671875,
+        "yPos" : 498.8345642089844,
         "stageType" : "TARGET"
       },
       "inputLanes" : [ "HTTPRouter_01OutputLane1548430520978" ],
@@ -548,7 +548,7 @@
       "stageVersion" : "1",
       "configuration" : [ {
         "name" : "mapRJsonConfigBean.tableName",
-        "value" : "/mapr-retail-sensors"
+        "value" : "/mapr-retail-demo/sensors"
       }, {
         "name" : "mapRJsonConfigBean.createTable",
         "value" : false
@@ -578,7 +578,317 @@
         "description" : "",
         "label" : "MapR DB JSON  - Sensors",
         "xPos" : 500,
-        "yPos" : 170,
+        "yPos" : 262.142822265625,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "HTTPRouter_01OutputLane1548430098642" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "MapRStreamsProducer_01",
+      "library" : "streamsets-datacollector-mapr_6_0-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_maprstreams_MapRStreamsDTarget",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.runtimeTopicResolution",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.topicExpression",
+        "value" : "${record:value('/topic')}"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.topicWhiteList",
+        "value" : "*"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.topic",
+        "value" : "topicName"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.partitionStrategy",
+        "value" : "ROUND_ROBIN"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.partition",
+        "value" : "${0}"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.singleMessagePerBatch",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.kafkaProducerConfigs",
+        "value" : [ ]
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataFormat",
+        "value" : "SDC_JSON"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.charset",
+        "value" : "UTF-8"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvFileFormat",
+        "value" : "CSV"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvHeader",
+        "value" : "NO_HEADER"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvReplaceNewLines",
+        "value" : true
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvReplaceNewLinesString",
+        "value" : " "
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvCustomDelimiter",
+        "value" : "|"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvCustomEscape",
+        "value" : "\\"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvCustomQuote",
+        "value" : "\""
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.jsonMode",
+        "value" : "MULTIPLE_OBJECTS"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.textFieldPath",
+        "value" : "/text"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.textRecordSeparator",
+        "value" : "\\n"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.textFieldMissingAction",
+        "value" : "ERROR"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.textEmptyLineIfNull",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.avroSchemaSource",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.avroSchema",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.registerSchema",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
+        "value" : [ ]
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.schemaRegistryUrls",
+        "value" : [ ]
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.schemaLookupMode",
+        "value" : "SUBJECT"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.subject",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.subjectToRegister",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.schemaId",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.includeSchema",
+        "value" : true
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.avroCompression",
+        "value" : "NULL"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.binaryFieldPath",
+        "value" : "/"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.protoDescriptorFile",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.messageType",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.fileNameEL",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.wholeFileExistsAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.includeChecksumInTheEvents",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.checksumAlgorithm",
+        "value" : "MD5"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.xmlPrettyPrint",
+        "value" : true
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.xmlValidateSchema",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.xmlSchema",
+        "value" : null
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "MapR Streams - Devices",
+        "xPos" : 500,
+        "yPos" : 149.58644104003906,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "HTTPRouter_01OutputLane1548430009505" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "MapRStreamsProducer_02",
+      "library" : "streamsets-datacollector-mapr_6_0-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_maprstreams_MapRStreamsDTarget",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.runtimeTopicResolution",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.topicExpression",
+        "value" : "${record:value('/topic')}"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.topicWhiteList",
+        "value" : "*"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.topic",
+        "value" : "topicName"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.partitionStrategy",
+        "value" : "ROUND_ROBIN"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.partition",
+        "value" : "${0}"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.singleMessagePerBatch",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.kafkaProducerConfigs",
+        "value" : [ ]
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataFormat",
+        "value" : "SDC_JSON"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.charset",
+        "value" : "UTF-8"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvFileFormat",
+        "value" : "CSV"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvHeader",
+        "value" : "NO_HEADER"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvReplaceNewLines",
+        "value" : true
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvReplaceNewLinesString",
+        "value" : " "
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvCustomDelimiter",
+        "value" : "|"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvCustomEscape",
+        "value" : "\\"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.csvCustomQuote",
+        "value" : "\""
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.jsonMode",
+        "value" : "MULTIPLE_OBJECTS"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.textFieldPath",
+        "value" : "/text"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.textRecordSeparator",
+        "value" : "\\n"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.textFieldMissingAction",
+        "value" : "ERROR"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.textEmptyLineIfNull",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.avroSchemaSource",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.avroSchema",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.registerSchema",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
+        "value" : [ ]
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.schemaRegistryUrls",
+        "value" : [ ]
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.schemaLookupMode",
+        "value" : "SUBJECT"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.subject",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.subjectToRegister",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.schemaId",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.includeSchema",
+        "value" : true
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.avroCompression",
+        "value" : "NULL"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.binaryFieldPath",
+        "value" : "/"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.protoDescriptorFile",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.messageType",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.fileNameEL",
+        "value" : null
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.wholeFileExistsAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.includeChecksumInTheEvents",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.checksumAlgorithm",
+        "value" : "MD5"
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.xmlPrettyPrint",
+        "value" : true
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.xmlValidateSchema",
+        "value" : false
+      }, {
+        "name" : "maprStreamsTargetConfigBean.dataGeneratorFormatConfig.xmlSchema",
+        "value" : null
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "MapR Streams - Sensors",
+        "xPos" : 499.51133372371356,
+        "yPos" : 370.1879625822368,
         "stageType" : "TARGET"
       },
       "inputLanes" : [ "HTTPRouter_01OutputLane1548430098642" ],
@@ -605,22 +915,22 @@
       "services" : [ ]
     },
     "info" : {
-      "pipelineId" : "MapRClusterd39951a0-5041-4724-a521-c4b8e5ad7458",
-      "title" : "MapR Retail Demo",
+      "pipelineId" : "mapr_retail_demo",
+      "title" : "mapr_retail_demo",
       "description" : "",
-      "created" : 1548321123168,
-      "lastModified" : 1548430633558,
+      "created" : 1548435504908,
+      "lastModified" : 1548516995809,
       "creator" : "admin",
       "lastModifier" : "admin",
       "lastRev" : "0",
-      "uuid" : "5659007e-e755-4e07-af13-696311586fc4",
+      "uuid" : "92f1d477-8be5-4932-9303-dfdadff5cb7c",
       "valid" : true,
       "metadata" : {
         "labels" : [ ]
       },
-      "name" : "MapRClusterd39951a0-5041-4724-a521-c4b8e5ad7458",
+      "name" : "mapr_retail_demo",
       "sdcVersion" : "3.6.0",
-      "sdcId" : "fcee4867-f477-11e8-906e-afe37fc56a5c"
+      "sdcId" : "5856f978-20c2-11e9-9435-7143b00ed390"
     },
     "metadata" : {
       "labels" : [ ]
@@ -917,8 +1227,8 @@
     "valid" : true,
     "issues" : {
       "stageIssues" : { },
-      "pipelineIssues" : [ ],
-      "issueCount" : 0
+      "issueCount" : 0,
+      "pipelineIssues" : [ ]
     },
     "previewable" : true
   },
@@ -983,7 +1293,7 @@
     } ],
     "dataRuleDefinitions" : [ ],
     "driftRuleDefinitions" : [ ],
-    "uuid" : "4b9ebd2b-98c1-47ee-9f8b-60dfbfa6fcd9",
+    "uuid" : "7ccf4b15-982c-40e1-b6f5-25a55c4e22d2",
     "configuration" : [ {
       "name" : "emailIDs",
       "value" : [ ]
