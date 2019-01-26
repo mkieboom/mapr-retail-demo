@@ -21,3 +21,9 @@
   hosts: mapr-retail-demo
   roles:
     - mapr-pacc-streamsets
+
+## Create MapR Volume, DB's and Event Streams
+- name: Create MapR Volume, DB's and Event Streams
+  hosts: mapr-retail-demo
+  roles:
+    - mapr-retail-demo-config
