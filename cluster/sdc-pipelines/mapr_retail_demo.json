@@ -5,7 +5,7 @@
     "pipelineId" : "mapr_retail_demo",
     "title" : "mapr_retail_demo",
     "description" : "",
-    "uuid" : "92f1d477-8be5-4932-9303-dfdadff5cb7c",
+    "uuid" : "ec817528-a9a1-43c6-9bbf-794275f9e69c",
     "configuration" : [ {
       "name" : "executionMode",
       "value" : "STANDALONE"
@@ -487,7 +487,7 @@
       "stageVersion" : "1",
       "configuration" : [ {
         "name" : "mapRJsonConfigBean.tableName",
-        "value" : "/mapr-retail-demo/devices"
+        "value" : "/mapr-retail-demo/devices-db"
       }, {
         "name" : "mapRJsonConfigBean.createTable",
         "value" : false
@@ -548,7 +548,7 @@
       "stageVersion" : "1",
       "configuration" : [ {
         "name" : "mapRJsonConfigBean.tableName",
-        "value" : "/mapr-retail-demo/sensors"
+        "value" : "/mapr-retail-demo/sensors-db"
       }, {
         "name" : "mapRJsonConfigBean.createTable",
         "value" : false
@@ -601,7 +601,7 @@
         "value" : "*"
       }, {
         "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.topic",
-        "value" : "topicName"
+        "value" : "/mapr-retail-demo/devices-stream:devices"
       }, {
         "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.partitionStrategy",
         "value" : "ROUND_ROBIN"
@@ -756,7 +756,7 @@
         "value" : "*"
       }, {
         "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.topic",
-        "value" : "topicName"
+        "value" : "/mapr-retail-demo/sensors-stream:sensors"
       }, {
         "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.partitionStrategy",
         "value" : "ROUND_ROBIN"
@@ -918,12 +918,12 @@
       "pipelineId" : "mapr_retail_demo",
       "title" : "mapr_retail_demo",
       "description" : "",
-      "created" : 1548435504908,
-      "lastModified" : 1548516995809,
+      "created" : 1548517166594,
+      "lastModified" : 1548517327156,
       "creator" : "admin",
       "lastModifier" : "admin",
       "lastRev" : "0",
-      "uuid" : "92f1d477-8be5-4932-9303-dfdadff5cb7c",
+      "uuid" : "ec817528-a9a1-43c6-9bbf-794275f9e69c",
       "valid" : true,
       "metadata" : {
         "labels" : [ ]
@@ -1226,9 +1226,9 @@
     },
     "valid" : true,
     "issues" : {
+      "pipelineIssues" : [ ],
       "stageIssues" : { },
-      "issueCount" : 0,
-      "pipelineIssues" : [ ]
+      "issueCount" : 0
     },
     "previewable" : true
   },
@@ -1293,7 +1293,7 @@
     } ],
     "dataRuleDefinitions" : [ ],
     "driftRuleDefinitions" : [ ],
-    "uuid" : "7ccf4b15-982c-40e1-b6f5-25a55c4e22d2",
+    "uuid" : "5a823ab6-8206-4cb7-b5d4-02d94cf52928",
     "configuration" : [ {
       "name" : "emailIDs",
       "value" : [ ]
