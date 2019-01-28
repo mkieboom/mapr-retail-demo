@@ -5,7 +5,7 @@
     "pipelineId" : "mapr_retail_demo",
     "title" : "mapr_retail_demo",
     "description" : "",
-    "uuid" : "ec817528-a9a1-43c6-9bbf-794275f9e69c",
+    "uuid" : "3e8d554a-5144-4b6f-b3f6-ef25556504a1",
     "configuration" : [ {
       "name" : "executionMode",
       "value" : "STANDALONE"
@@ -453,7 +453,7 @@
         }, {
           "outputLane" : "HTTPRouter_01OutputLane1548430098642",
           "httpMethod" : "POST",
-          "pathParam" : "/sensors"
+          "pathParam" : "/sensorsconnecteddevices"
         }, {
           "outputLane" : "HTTPRouter_01OutputLane1548430520978",
           "httpMethod" : "POST",
@@ -471,7 +471,7 @@
       } ],
       "uiInfo" : {
         "description" : "",
-        "label" : "HTTP Router 1",
+        "label" : "HTTP Router",
         "xPos" : 280,
         "yPos" : 140,
         "stageType" : "PROCESSOR"
@@ -548,13 +548,13 @@
       "stageVersion" : "1",
       "configuration" : [ {
         "name" : "mapRJsonConfigBean.tableName",
-        "value" : "/mapr-retail-demo/sensors-db"
+        "value" : "/mapr-retail-demo/sensors-connecteddevices-db"
       }, {
         "name" : "mapRJsonConfigBean.createTable",
         "value" : false
       }, {
         "name" : "mapRJsonConfigBean.keyField",
-        "value" : "_id"
+        "value" : "/_id"
       }, {
         "name" : "mapRJsonConfigBean.isBinaryRowKey",
         "value" : false
@@ -576,7 +576,7 @@
       } ],
       "uiInfo" : {
         "description" : "",
-        "label" : "MapR DB JSON  - Sensors",
+        "label" : "MapR DB JSON  - Sensors-connecteddevices",
         "xPos" : 500,
         "yPos" : 262.142822265625,
         "stageType" : "TARGET"
@@ -756,7 +756,7 @@
         "value" : "*"
       }, {
         "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.topic",
-        "value" : "/mapr-retail-demo/sensors-stream:sensors"
+        "value" : "/mapr-retail-demo/sensors-connecteddevices-stream:sensors"
       }, {
         "name" : "maprStreamsTargetConfigBean.mapRStreamsTargetConfig.partitionStrategy",
         "value" : "ROUND_ROBIN"
@@ -886,7 +886,7 @@
       } ],
       "uiInfo" : {
         "description" : "",
-        "label" : "MapR Streams - Sensors",
+        "label" : "MapR Streams - Sensors-connecteddevices",
         "xPos" : 499.51133372371356,
         "yPos" : 370.1879625822368,
         "stageType" : "TARGET"
@@ -919,11 +919,11 @@
       "title" : "mapr_retail_demo",
       "description" : "",
       "created" : 1548517166594,
-      "lastModified" : 1548517327156,
+      "lastModified" : 1548688941806,
       "creator" : "admin",
       "lastModifier" : "admin",
       "lastRev" : "0",
-      "uuid" : "ec817528-a9a1-43c6-9bbf-794275f9e69c",
+      "uuid" : "3e8d554a-5144-4b6f-b3f6-ef25556504a1",
       "valid" : true,
       "metadata" : {
         "labels" : [ ]

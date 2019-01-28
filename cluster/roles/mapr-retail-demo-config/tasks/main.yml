@@ -15,15 +15,15 @@
   - name: Create the 'devices' MapR Event Stream
     shell: maprcli stream topic create -path /mapr-retail-demo/devices-stream -topic devices -partitions 3
 
-  # MapR-DB table: sensors
+  # MapR-DB table: sensors-connecteddevices
   - name: Create the 'sensors' MapR-DB JSON table
-    shell: maprcli table create -path /mapr-retail-demo/sensors-db -tabletype json
+    shell: maprcli table create -path /mapr-retail-demo/sensors-connecteddevices-db -tabletype json
   - name: Open the 'sensors' MapR-DB JSON table
-    shell: maprcli table cf edit -path /mapr-retail-demo/sensors-db -cfname default -readperm p -writeperm p -traverseperm  p
+    shell: maprcli table cf edit -path /mapr-retail-demo/sensors-connecteddevices-db -cfname default -readperm p -writeperm p -traverseperm  p
 
-  # MapR Event Stream: sensors
+  # MapR Event Stream: sensors-connecteddevices
   - name: Create the 'sensors' MapR Event Stream
-    shell: maprcli stream create -path /mapr-retail-demo/sensors-stream -produceperm p -consumeperm p -topicperm p
+    shell: maprcli stream create -path /mapr-retail-demo/sensors-connecteddevices-stream -produceperm p -consumeperm p -topicperm p
   - name: Create the 'sensors' MapR Event Stream
-    shell: maprcli stream topic create -path /mapr-retail-demo/sensors-stream -topic sensors -partitions 3
+    shell: maprcli stream topic create -path /mapr-retail-demo/sensors-connecteddevices-stream -topic sensors -partitions 3
 
