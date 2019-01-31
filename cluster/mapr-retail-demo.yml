@@ -22,6 +22,12 @@
   roles:
     - mapr-pacc-streamsets
 
+## Install mapr-retail-demo-cashregister
+- name: Install mapr-retail-demo-cashregister
+  hosts: mapr-retail-demo
+  roles:
+    - mapr-retail-demo-cashregister
+
 ## Create MapR Volume, DB's and Event Streams
 - name: Create MapR Volume, DB's and Event Streams
   hosts: mapr-retail-demo

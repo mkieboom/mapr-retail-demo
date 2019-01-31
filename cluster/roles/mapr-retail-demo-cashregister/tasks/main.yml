@@ -1,0 +1,21 @@
+---
+  # Download the MapR Retail Demo Cashregister Container
+  - name: Download the mapr-retail-demo-cashregister-docker container
+    docker_image:
+      name: mkieboom/mapr-retail-demo-cashregister-docker
+      state: present
+      force: yes
+
+  - name: Launch the mapr-retail-demo-cashregister-docker container
+    docker_container:
+      image: mkieboom/mapr-retail-demo-cashregister-docker
+      name: mapr-retail-demo-cashregister-docker
+      restart_policy: always
+      state: started
+      recreate: yes
+      force_kill: yes
+      interactive: yes
+      env:
+        MAPR_IP={{ansible_default_ipv4.address}}
+      ports:
+        - "80:80"
