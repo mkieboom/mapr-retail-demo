@@ -10,6 +10,7 @@ export RPI_GITHUB_PROJECT_URL="https://github.com/mkieboom/$RPI_GITHUB_PROJECT_N
 export RPI_CONFIG_FILE="/root/mapr-retail-demo/raspberrypi/mapr-retail-demo.config"
 
 # Install git
+echo "Installing basics..."
 apt-get -qq -y install git
 
 # Clone the raspberry-deployment ansible project
