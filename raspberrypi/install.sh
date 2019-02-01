@@ -28,8 +28,10 @@ fi
 if [ ! -f $RPI_CONFIG_FILE ];
 then
 	echo
+	echo
+	echo
 	echo "#############################################################"
-	echo "Config file not found. We need to configure that first, eg:"
+	echo "We need to provide a config file first, eg:"
 	echo "cp $RPI_CONFIG_FILE.template $RPI_CONFIG_FILE"
 	echo ""
 	echo "Edit the config file and provide all the details:"
@@ -37,6 +39,7 @@ then
 	echo ""
 	echo "Once done, launch this command again:"
 	echo "curl https://raw.githubusercontent.com/mkieboom/mapr-retail-demo/master/raspberrypi/install.sh|bash"
+	echo "#############################################################"
 	exit 0;
 fi
 
