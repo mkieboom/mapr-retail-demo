@@ -6,10 +6,16 @@
 export RPI_GITHUB_PROJECT_NAME="raspberrypi-deployment"
 export RPI_GITHUB_PROJECT_URL="https://github.com/mkieboom/$RPI_GITHUB_PROJECT_NAME"
 
-# Create a hidden config file .rpi_config
-export RPI_CONFIG_FILE="mapr-retail-demo.config"
+# The config file
+export RPI_CONFIG_FILE="/root/mapr-retail-demo/raspberrypi/mapr-retail-demo.config"
 
-# Check if mkpasswd is installed, otherwise exit
+# Check if the config file is present
+if [ ! -f $RPI_CONFIG_FILE ];
+then
+	exit 0;
+fi
+
+# Check if mkpasswd is installed, otherwise install it
 if [ ! -f /usr/bin/mkpasswd ];
 then
 	echo "Installing whois for mkpasswd usage..."
