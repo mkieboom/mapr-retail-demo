@@ -45,3 +45,13 @@
     register: command_result
     failed_when: "command_result.rc != 0 and 'already exists' not in command_result.stdout"
 
+  # MapR-DB table: qrscanned-devices
+  - name: Create the 'scanned-devices' MapR-DB JSON table
+    shell: maprcli table create -path /mapr-retail-demo/qrscanned-devices-db -tabletype json
+    register: command_result
+    failed_when: "command_result.rc != 0 and 'File exists' not in command_result.stdout"
+  - name: Open the 'scanned-devices' MapR-DB JSON table
+    shell: maprcli table cf edit -path /mapr-retail-demo/qrscanned-devices-db -cfname default -readperm p -writeperm p -traverseperm  p
+    register: command_result
+    failed_when: "command_result.rc != 0 and 'File exists' not in command_result.stdout"
+

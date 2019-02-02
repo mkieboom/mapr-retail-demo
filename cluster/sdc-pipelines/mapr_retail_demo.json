@@ -5,7 +5,7 @@
     "pipelineId" : "mapr_retail_demo",
     "title" : "mapr_retail_demo",
     "description" : "",
-    "uuid" : "3e8d554a-5144-4b6f-b3f6-ef25556504a1",
+    "uuid" : "71c125d2-8433-4d74-978b-94ccbd01dbf4",
     "configuration" : [ {
       "name" : "executionMode",
       "value" : "STANDALONE"
@@ -457,6 +457,10 @@
         }, {
           "outputLane" : "HTTPRouter_01OutputLane1548430520978",
           "httpMethod" : "POST",
+          "pathParam" : "/qrscanneddevices"
+        }, {
+          "outputLane" : "HTTPRouter_01OutputLane1549110602911",
+          "httpMethod" : "GET",
           "pathParam" : "/"
         } ]
       }, {
@@ -477,7 +481,7 @@
         "stageType" : "PROCESSOR"
       },
       "inputLanes" : [ "HTTPServer_01OutputLane15483211340450" ],
-      "outputLanes" : [ "HTTPRouter_01OutputLane1548430009505", "HTTPRouter_01OutputLane1548430098642", "HTTPRouter_01OutputLane1548430520978" ],
+      "outputLanes" : [ "HTTPRouter_01OutputLane1548430009505", "HTTPRouter_01OutputLane1548430098642", "HTTPRouter_01OutputLane1548430520978", "HTTPRouter_01OutputLane1549110602911" ],
       "eventLanes" : [ ],
       "services" : [ ]
     }, {
@@ -534,10 +538,10 @@
         "description" : "",
         "label" : "Trash 1",
         "xPos" : 498.38348388671875,
-        "yPos" : 498.8345642089844,
+        "yPos" : 607.5583190917969,
         "stageType" : "TARGET"
       },
-      "inputLanes" : [ "HTTPRouter_01OutputLane1548430520978" ],
+      "inputLanes" : [ "HTTPRouter_01OutputLane1549110602911" ],
       "outputLanes" : [ ],
       "eventLanes" : [ ],
       "services" : [ ]
@@ -895,6 +899,50 @@
       "outputLanes" : [ ],
       "eventLanes" : [ ],
       "services" : [ ]
+    }, {
+      "instanceName" : "MapRDBJSON_03",
+      "library" : "streamsets-datacollector-mapr_6_0-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_mapr_MapRJsonDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "mapRJsonConfigBean.tableName",
+        "value" : "/mapr-retail-demo/qrscanned-devices-db"
+      }, {
+        "name" : "mapRJsonConfigBean.createTable",
+        "value" : false
+      }, {
+        "name" : "mapRJsonConfigBean.keyField",
+        "value" : "/_id"
+      }, {
+        "name" : "mapRJsonConfigBean.isBinaryRowKey",
+        "value" : false
+      }, {
+        "name" : "mapRJsonConfigBean.insertOrReplace",
+        "value" : "REPLACE"
+      }, {
+        "name" : "mapRJsonConfigBean.setOrReplace",
+        "value" : "REPLACE"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "MapR DB JSON - Scanned Devices",
+        "xPos" : 500.12944238728846,
+        "yPos" : 492.24265778074823,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "HTTPRouter_01OutputLane1548430520978" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
     } ],
     "errorStage" : {
       "instanceName" : "Discard_ErrorStage",
@@ -918,12 +966,12 @@
       "pipelineId" : "mapr_retail_demo",
       "title" : "mapr_retail_demo",
       "description" : "",
-      "created" : 1548517166594,
-      "lastModified" : 1548688941806,
+      "created" : 1549109161209,
+      "lastModified" : 1549111247330,
       "creator" : "admin",
       "lastModifier" : "admin",
       "lastRev" : "0",
-      "uuid" : "3e8d554a-5144-4b6f-b3f6-ef25556504a1",
+      "uuid" : "71c125d2-8433-4d74-978b-94ccbd01dbf4",
       "valid" : true,
       "metadata" : {
         "labels" : [ ]
@@ -1226,9 +1274,9 @@
     },
     "valid" : true,
     "issues" : {
-      "pipelineIssues" : [ ],
       "stageIssues" : { },
-      "issueCount" : 0
+      "issueCount" : 0,
+      "pipelineIssues" : [ ]
     },
     "previewable" : true
   },
@@ -1293,7 +1341,7 @@
     } ],
     "dataRuleDefinitions" : [ ],
     "driftRuleDefinitions" : [ ],
-    "uuid" : "5a823ab6-8206-4cb7-b5d4-02d94cf52928",
+    "uuid" : "98926edd-9f99-4cff-9211-92f9c0f4584f",
     "configuration" : [ {
       "name" : "emailIDs",
       "value" : [ ]
