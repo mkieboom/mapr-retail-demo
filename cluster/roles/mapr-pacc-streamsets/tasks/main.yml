@@ -53,4 +53,4 @@
       - /streamsets_pipelines/:/data
 
   - name: Import the pipelines into Streamsets and start them
-    shell: docker exec -it mapr-pacc-streamsets-docker /data/import_pipelines/import_pipelines.sh
+    shell: docker exec mapr-pacc-streamsets-docker /data/import_pipelines/import_pipelines.sh

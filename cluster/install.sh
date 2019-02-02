@@ -24,7 +24,8 @@ fi
 
 # Run the ansible playbook
 cd ~/$RETAIL_GITHUB_PROJECT_NAME/cluster
-#ansible-playbook \
-#  -i myhosts/1node_cluster \
-#  mapr-retail-demo.yml \
-#  --connection=local
+ansible-playbook \
+  -i myhosts/1node_cluster \
+  mapr-retail-demo.yml \
+  --connection=local
+
