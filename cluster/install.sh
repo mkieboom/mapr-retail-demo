@@ -8,7 +8,7 @@ export RETAIL_GITHUB_PROJECT_URL="https://github.com/mkieboom/$RETAIL_GITHUB_PRO
 
 # Install git
 echo "Installing basics... please wait"
-yum install -qq -y ansible git
+yum install -y ansible git
 
 # Clone the ansible project
 echo "Cloning the ansible project from github"
